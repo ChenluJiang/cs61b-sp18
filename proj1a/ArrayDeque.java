@@ -13,16 +13,16 @@ public class ArrayDeque<T> {
         size = 0;
     }
 
-    /* Creates a deep copy of other. */
-    public ArrayDeque(ArrayDeque other) {
-        items = (T[]) new Object[other.items.length];
-        nextFirst = other.nextFirst;
-        nextLast = other.nextLast;
-        size = other.size;
-
-        System.arraycopy(other.items, 0, items, 0, other.items.length);
-
-    }
+//    /* Creates a deep copy of other. */
+//    public ArrayDeque(ArrayDeque other) {
+//        items = (T[]) new Object[other.items.length];
+//        nextFirst = other.nextFirst;
+//        nextLast = other.nextLast;
+//        size = other.size;
+//
+//        System.arraycopy(other.items, 0, items, 0, other.items.length);
+//
+//    }
 
     /*Returns true if deque is empty, false otherwise.*/
     public boolean isEmpty() {
@@ -37,7 +37,7 @@ public class ArrayDeque<T> {
     /* Prints the items in the deque from first to last, separated by a space.
     Once all the items have been printed, print out a new line.*/
     public void printDeque() {
-        for(int i=plusOne(nextFirst); i!=nextLast; i=plusOne(i)) {
+        for (int i = plusOne(nextFirst); i != nextLast; i = plusOne(i)) {
             System.out.print(items[i] + " ");
         }
         System.out.println();
@@ -46,17 +46,17 @@ public class ArrayDeque<T> {
 
     /*Adds an item of type T to the front of the deque.*/
     public void addFirst(T item) {
-        if(isFull()) {
+        if (isFull()) {
             upSize();
         }
         items[nextFirst] = item;
         nextFirst = minusOne(nextFirst);
-        size ++;
+        size++;
     }
 
     /*Adds an item of type T to the back of the deque.*/
     public void addLast(T item) {
-        if(isFull()) {
+        if (isFull()) {
             upSize();
         }
         items[nextLast] = item;
@@ -70,10 +70,10 @@ public class ArrayDeque<T> {
         nextFirst = plusOne(nextFirst);
         T removeItem = items[nextFirst];
         items[nextFirst] = null;
-        if(!isEmpty()) {
+        if (!isEmpty()) {
             size--;
         }
-        if(isSparse()) {
+        if (isSparse()) {
             downSize();
         }
         return removeItem;
@@ -85,10 +85,10 @@ public class ArrayDeque<T> {
         nextLast = minusOne(nextLast);
         T removeItem = items[nextLast];
         items[nextLast] = null;
-        if(!isEmpty()) {
+        if (!isEmpty()) {
             size--;
         }
-        if(isSparse()) {
+        if (isSparse()) {
             downSize();
         }
         return removeItem;
@@ -97,7 +97,7 @@ public class ArrayDeque<T> {
     /*Gets the item at the given index, where 0 is the front, 1 is the next item,
     and so forth. If no such item exists, returns null. Must not alter the deque!*/
     public T get(int index) {
-        if(index >= size) {
+        if (index >= size) {
             return null;
         }
         //plusOne(nextFirst) is the real index 0
@@ -106,12 +106,12 @@ public class ArrayDeque<T> {
 
     /*Helper method for computing nextFirst index*/
     private int minusOne(int index) {
-        return (index-1 + items.length) % items.length;
+        return (index - 1 + items.length) % items.length;
     }
 
     /*Helper method for computing nextLast index*/
     private int plusOne(int index) {
-        return (index+1) % items.length;
+        return (index + 1) % items.length;
     }
 
     /*Helper method for checking if the array is full*/
@@ -120,16 +120,16 @@ public class ArrayDeque<T> {
     }
 
     /*Helper method for checking if the array is sparse*/
-    private  boolean isSparse() {
-        return items.length >= 16 && (double)size/items.length < 0.25;
+    private boolean isSparse() {
+        return items.length >= 16 && (double) size / items.length < 0.25;
     }
 
     /*Helper method for resizing the array
-    * We won't use arrayCopy considering the downsizing situation*/
+     * We won't use arrayCopy considering the downsizing situation*/
     private void resize(int capacity) {
         T[] cache = (T[]) new Object[capacity];
         int realIndex = plusOne(nextFirst);
-        for(int i=0; i<size; i++) {
+        for (int i = 0; i < size; i++) {
             cache[i] = items[realIndex];
             realIndex = plusOne(realIndex);
         }
