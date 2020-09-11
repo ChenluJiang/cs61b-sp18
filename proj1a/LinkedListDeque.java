@@ -1,6 +1,6 @@
 public class LinkedListDeque<T> {
 
-    /* Inner ListNode Class */
+    // Inner ListNode Class
     private class ListNode {
 
         ListNode prev;
@@ -37,7 +37,8 @@ public class LinkedListDeque<T> {
 //        size = 0;
 //
 //        for (int i = 0; i < other.size(); i++) {
-//            addLast((T) other.get(i)); //needs casting!!
+                //needs casting!!
+//            addLast((T) other.get(i));
 //        }
 //
 //    }
@@ -70,7 +71,8 @@ public class LinkedListDeque<T> {
     /*
      * Prints the items in the deque from first to last,
      * separated by a space.
-     * Once all the items have been printed, print out a new line.
+     * Once all the items have been printed,
+     * print out a new line.
      */
     public void printDeque() {
         ListNode node = sentinel;
@@ -114,7 +116,8 @@ public class LinkedListDeque<T> {
     }
 
     /*
-    Gets the item at the given index, where 0 is the front,
+    Gets the item at the given index,
+    where 0 is the front,
     1 is the next item, and so forth.
     If no such item exists, returns null.
     Must not alter the deque!
@@ -148,6 +151,5 @@ public class LinkedListDeque<T> {
         }
         return getRecursive(index, sentinel);
     }
-
-
 }
+
