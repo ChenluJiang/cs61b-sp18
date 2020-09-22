@@ -25,10 +25,10 @@ public class ArrayDeque<T> implements Deque<T> {
 //    }
 
     /*Returns true if deque is empty, false otherwise.*/
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
+//    @Override
+//    public boolean isEmpty() {
+//        return size == 0;
+//    }
 
     /*Returns the number of items in the deque.*/
     @Override
