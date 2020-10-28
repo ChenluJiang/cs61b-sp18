@@ -37,7 +37,7 @@ public class LinkedListDeque<T> {
 //        size = 0;
 //
 //        for (int i = 0; i < other.size(); i++) {
-                //needs casting!!
+    //needs casting!!
 //            addLast((T) other.get(i));
 //        }
 //
